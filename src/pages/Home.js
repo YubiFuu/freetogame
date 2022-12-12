@@ -13,7 +13,7 @@ const Home = () => {
     console.log(recentGames);
 
     return (
-        <main>
+        <main className="home">
             <div
                 className="image"
                 style={{
