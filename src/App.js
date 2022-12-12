@@ -8,23 +8,20 @@ import SideBar from "./components/SideBar";
 import Header from "./components/Header";
 
 function App() {
-    return (
-        <div className="App">
-            <BrowserRouter>
-                <SideBar />
-                <Header />
-                <Routes>
-                    <Route path="/" element={<Home />}></Route>
-                    <Route path="/games" element={<AllGames />}></Route>
-                    <Route
-                        path="/recentgames"
-                        element={<RecentlyAdded />}
-                    ></Route>
-                    <Route path="/games/:id" element={<GameDetails />}></Route>
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <SideBar />
+        <Header />
+        <Routes>
+          <Route path="/games" element={<Home />}></Route>
+          <Route path="/" element={<AllGames />}></Route>
+          <Route path="/recentgames" element={<RecentlyAdded />}></Route>
+          <Route path="/games/:id" element={<GameDetails />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
