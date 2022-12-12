@@ -1,0 +1,21 @@
+.card-template {
+    background-color: #102130;
+    border-radius: 24px 24px 12px 12px;
+}
+.card-template div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10%;
+}
+
+.card-template div:first-of-type p {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #afc7df;
+    font-family: "TitilliumWeb";
+}
+
+.card-template h2 {
+    font-size: 1.8rem;
+}
