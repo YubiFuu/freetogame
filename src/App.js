@@ -14,8 +14,8 @@ function App() {
                 <SideBar />
                 <Header />
                 <Routes>
-                    <Route path="/" element={<Home />}></Route>
-                    <Route path="/games" element={<AllGames />}></Route>
+                    <Route path="/games" element={<Home />}></Route>
+                    <Route path="/" element={<AllGames />}></Route>
                     <Route
                         path="/recentgames"
                         element={<RecentlyAdded />}
