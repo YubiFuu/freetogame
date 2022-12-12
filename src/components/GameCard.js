@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 
 const GameCard = (props) => {
     return (
-        <div>
+        <div className="card-template">
             <img src={props.thumbnail} alt={props.thumbnail} />
-            <h2>{props.title}</h2>
-            <p>{props.short_description}</p>
-            <Link to="/"> Read More </Link>
+            <div>
+                <h2>{props.title}</h2>
+                <p>{props.short_description}</p>
+                <Link to="/"> Read More </Link>
+            </div>
             <hr />
-            <p>{props.platform}</p>
-            <p>{props.genre}</p>
+            <div>
+                <p>{props.platform}</p>
+                <p>{props.genre}</p>
+            </div>
         </div>
     );
 };

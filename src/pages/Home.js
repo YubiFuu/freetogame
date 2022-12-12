@@ -25,7 +25,7 @@ const Home = () => {
             <div>
                 <h3>Recently Added</h3>
                 <div className="grid">
-                    {recentGames.map((e) => (
+                    {recentGames.slice(0, 4).map((e) => (
                         <GameCard {...e} />
                     ))}
                 </div>
