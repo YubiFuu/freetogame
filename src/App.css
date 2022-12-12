@@ -2,6 +2,7 @@
     font-family: "Oswald";
     src: url(./fonts/Oswald-VariableFont_wght.ttf);
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +12,7 @@ html {
     scroll-behavior: smooth;
     font-size: 62.5%;
 }
+
 body {
     font-family: "Oswald";
     font-weight: 100 900;
@@ -18,8 +20,18 @@ body {
     color: #ffffff;
 }
 
-img {
+.image {
     width: 100%;
     aspect-ratio: 3/1;
-    object-fit: cover;
+    display: flex;
+    align-items: flex-end;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.image :first-child {
+    width: 400px;
+    margin: 50px;
+    font-size: 4.8rem;
+    text-transform: uppercase;
 }
