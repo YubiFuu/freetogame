@@ -12,7 +12,14 @@ const AllGames = () => {
 
   return (
     <main>
-      <></>
+      <div
+        className="image"
+        style={{
+          backgroundImage: `url(./images/league.png)`,
+        }}
+      >
+        <h2>All Games</h2>
+      </div>
     </main>
   );
 };
