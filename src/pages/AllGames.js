@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import GameCard from "../components/GameCard";
 import "./AllGames.css";
 const AllGames = () => {
+  const [platform, setPlatform] = useState("");
+  const [genre, setGenre] = useState("");
+  const [sort, setSort] = useState("");
   const [data, setData] = useState([]);
   const fetchData = () => {
     fetch("https://www.freetogame.com/api/games")
@@ -84,7 +87,12 @@ const AllGames = () => {
 
             <div class="dropdown-content">
               <div className="choice">
-                <input type="checkbox" name="mmoprg" id="mmoprg" />
+                <input
+                  type="checkbox"
+                  name="mmoprg"
+                  id="mmoprg"
+                  value="MMOPRG"
+                />
                 <label htmlFor="mmoprg">MMOPRG</label>
               </div>
               <div className="choice">
@@ -142,9 +150,15 @@ const AllGames = () => {
             </div>
           </div>
         </div>
-        <div className="grid">
+        <div className="gridd">
           {data.map((elt, index) => (
-            <GameCard key={index} {...elt} />
+            <GameCard
+              key={index}
+              title={elt.title}
+              platform={elt.platform}
+              genre={elt.genre}
+              thumbnail={elt.thumbnail}
+            />
           ))}
         </div>
       </main>
