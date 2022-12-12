@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import GameCard from "../components/GameCard";
 import "./AllGames.css";
 const AllGames = () => {
   const [data, setData] = useState([]);
@@ -141,7 +142,11 @@ const AllGames = () => {
             </div>
           </div>
         </div>
-        <div className="grid"></div>
+        <div className="grid">
+          {data.map((elt, index) => (
+            <GameCard key={index} {...elt} />
+          ))}
+        </div>
       </main>
     </>
   );
