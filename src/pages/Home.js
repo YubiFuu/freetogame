@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import GameCard from "../components/GameCard";
 import "./Home.css";
 const Home = () => {
-    const [data, setData] = useState([]);
+    const [recentGames, setRecentGames] = useState([]);
 
     useEffect(() => {
-        fetch("http://www.freetogame.com/api/games?category=shooter ")
+        fetch("https://www.freetogame.com/api/games?sort-by=release-date")
             .then((res) => res.json())
-            .then((json) => setData(json));
+            .then((json) => setRecentGames(json));
     }, []);
-    console.log(data);
+    console.log(recentGames);
 
     return (
         <main>
@@ -19,6 +21,15 @@ const Home = () => {
                 }}
             >
                 <h2>Find & Track the best Free-To-Play Games!</h2>
+            </div>
+            <div>
+                <h3>Recently Added</h3>
+                <div className="grid">
+                    {recentGames.map((e) => (
+                        <GameCard {...e} />
+                    ))}
+                </div>
+                <Link to="/recentgames">Show More</Link>
             </div>
         </main>
     );
