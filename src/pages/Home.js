@@ -4,13 +4,21 @@ import GameCard from "../components/GameCard";
 import "./Home.css";
 const Home = () => {
     const [recentGames, setRecentGames] = useState([]);
+    const [topPc, setTopPc] = useState([]);
 
     useEffect(() => {
         fetch("https://www.freetogame.com/api/games?sort-by=release-date")
             .then((res) => res.json())
             .then((json) => setRecentGames(json));
     }, []);
-    console.log(recentGames);
+
+    useEffect(() => {
+        fetch(
+            "https://www.freetogame.com/api/games?platform=pc&sort-by=popularity"
+        )
+            .then((res) => res.json())
+            .then((json) => setTopPc(json));
+    }, []);
 
     return (
         <main className="home">
@@ -24,8 +32,17 @@ const Home = () => {
             </div>
             <div>
                 <h3>Recently Added</h3>
-                <div className="grid">
+                <div className="recent-grid">
                     {recentGames.slice(0, 4).map((e) => (
+                        <GameCard {...e} />
+                    ))}
+                </div>
+                <Link to="/recentgames">Show More</Link>
+            </div>
+            <div>
+                <h3>Top 4 Games for PC</h3>
+                <div className="toppc-grid">
+                    {topPc.slice(0, 4).map((e) => (
                         <GameCard {...e} />
                     ))}
                 </div>
