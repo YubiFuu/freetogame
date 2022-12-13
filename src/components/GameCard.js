@@ -9,7 +9,7 @@ const GameCard = (props) => {
                 <div>
                     <h2>{props.title}</h2>
                     <p>{props.short_description}</p>
-                    <Link to="/"> Read More </Link>
+                    <Link to={`/games/${props.id}`}> Read More </Link>
                 </div>
                 <hr />
                 <div>
