@@ -80,3 +80,20 @@
 .gridd .card-template div:first-of-type p {
   display: none;
 }
+.gridd .card-template:hover {
+  transform: scale(1.1);
+}
+.searchbtn {
+  background-color: #ff4654;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  width: 105px;
+  height: 51px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.searchbtn:hover {
+  transform: scale(1.1);
+}

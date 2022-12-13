@@ -2,17 +2,29 @@ import { useState, useEffect } from "react";
 import GameCard from "../components/GameCard";
 import "./AllGames.css";
 const AllGames = () => {
-  const [platform, setPlatform] = useState("");
-  const [genre, setGenre] = useState("");
-  const [sort, setSort] = useState("");
+  const [platform, setPlatform] = useState("all");
+  const [genre, setGenre] = useState("games?");
+  const [sort, setSort] = useState("all");
   const [data, setData] = useState([]);
+  const readInputPlatform = (event) => {
+    setPlatform(event.target.id);
+  };
+  const Relevance = (event) => {
+    setSort(event.target.id);
+  };
   const fetchData = () => {
-    fetch("https://www.freetogame.com/api/games")
+    console.log(platform);
+    fetch(
+      `https://www.freetogame.com/api/${genre}&platform=${platform}&sort-by=${sort}`
+    )
       .then((response) => response.json())
       .then((json) => setData(json));
   };
-  useEffect(fetchData, []);
-  console.log(data);
+
+  console.log(genre);
+
+  useEffect(fetchData, [platform]);
+  //   console.log(data);
 
   return (
     <>
@@ -27,9 +39,9 @@ const AllGames = () => {
         </div>
       </header>
       <main>
-        <div className="filter">
-          <div class="dropdown">
-            <div class="dropbtn">
+        <form className="filter">
+          <div className="dropdown">
+            <div className="dropbtn">
               <h2>Platform</h2>
               <svg
                 className="vector-down"
@@ -42,30 +54,51 @@ const AllGames = () => {
                 <path
                   d="M1 1L6 16L11 1"
                   stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
 
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <div className="choice">
-                <input type="checkbox" name="all" id="all" />
+                <input
+                  onChange={readInputPlatform}
+                  className="platform"
+                  type="radio"
+                  name="1"
+                  id="all"
+                  value="1"
+                />
                 <label htmlFor="all">All Platforms</label>
               </div>
               <div className="choice">
-                <input type="checkbox" name="windwos" id="windwos" />
+                <input
+                  onChange={readInputPlatform}
+                  className="platform"
+                  type="radio"
+                  name="1"
+                  id="pc"
+                  value="1"
+                />
                 <label htmlFor="windwos">Windwos (pc)</label>
               </div>
               <div className="choice">
-                <input type="checkbox" name="browser" id="browser" />
+                <input
+                  onChange={readInputPlatform}
+                  className="platform"
+                  type="radio"
+                  name="1"
+                  id="browser"
+                  value="1"
+                />
                 <label htmlFor="browser">Browser (Web)</label>
               </div>
             </div>
           </div>
-          <div class="dropdown">
-            <div class="dropbtn">
+          <div className="dropdown">
+            <div className="dropbtn">
               <h2>Genre/Tag</h2>
               <svg
                 className="vector-down"
@@ -78,16 +111,17 @@ const AllGames = () => {
                 <path
                   d="M1 1L6 16L11 1"
                   stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
 
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <div className="choice">
                 <input
+                  //   onClick={readInput}
                   type="checkbox"
                   name="mmoprg"
                   id="mmoprg"
@@ -109,8 +143,8 @@ const AllGames = () => {
               </div>
             </div>
           </div>
-          <div class="dropdown">
-            <div class="dropbtn">
+          <div className="dropdown">
+            <div className="dropbtn">
               <h2>Sort by</h2>
               <svg
                 className="vector-down"
@@ -123,14 +157,14 @@ const AllGames = () => {
                 <path
                   d="M1 1L6 16L11 1"
                   stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
 
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <div className="choice">
                 <input type="checkbox" name="all" id="all" />
                 <label htmlFor="all">Relevance</label>
@@ -149,7 +183,8 @@ const AllGames = () => {
               </div>
             </div>
           </div>
-        </div>
+          <button className="searchbtn">search</button>
+        </form>
         <div className="gridd">
           {data.map((elt, index) => (
             <GameCard
