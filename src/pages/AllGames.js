@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import GameCard from "../components/GameCard";
+import Header from "../components/Header";
 import "./AllGames.css";
 const AllGames = () => {
+  let game = document.querySelector(".input-search").value;
+  console.log(game);
   const [platform, setPlatform] = useState("all");
   const [genre, setGenre] = useState("");
   const [sort, setSort] = useState("all");

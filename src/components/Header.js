@@ -4,8 +4,8 @@ import { useState } from "react";
 const Header = () => {
   const [game, setGame] = useState("");
 
-  const readSearch = () => {
-    setGame(document.querySelector(".input-search").value);
+  const readSearch = (event) => {
+    setGame(event.target.value);
   };
   console.log(game);
 
@@ -17,13 +17,15 @@ const Header = () => {
         </Link>
 
         <div className="recht">
-          <button onClick={readSearch} className="button-search">
+          <button className="button-search">
             <img className="search-logo" src="./images/Search.svg" alt="" />
           </button>
           <input
             type="text"
             className="input-search"
             placeholder="Type to Search..."
+            onChange={readSearch}
+            value={game}
           />
         </div>
       </div>
