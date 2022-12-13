@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 import { useState } from "react";
 const Header = () => {
@@ -11,7 +12,10 @@ const Header = () => {
   return (
     <>
       <div className="header" action="">
-        <img id="logo" className="logo" src="./images/Logo1.svg" alt="" />
+        <Link className="logo-link" to="/">
+          <img id="logo" className="logo" src="./images/Logo1.svg" alt="" />
+        </Link>
+
         <div className="recht">
           <button onClick={readSearch} className="button-search">
             <img className="search-logo" src="./images/Search.svg" alt="" />

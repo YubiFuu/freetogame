@@ -12,6 +12,9 @@
   width: 130;
   height: 36px;
 }
+.header a {
+  background-color: initial;
+}
 .input-search {
   height: 50px;
   width: 50px;
