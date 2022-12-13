@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import GameCard from "../components/GameCard";
 import "./AllGames.css";
 const AllGames = () => {
@@ -17,26 +18,19 @@ const AllGames = () => {
   };
   const readInputGenre = (event) => {
     setGenre(`&category=${event.target.id}`);
-    // fetchUrl = `https://www.freetogame.com/api/games?platform=${platform}&category=${genre}&sort-by=${sort}`;
     fetchData();
   };
-  console.log(genre);
-
   const fetchData = () => {
-    console.log(platform);
-    console.log(sort);
     fetch(`${fetchUrl}`)
       .then((response) => response.json())
       .then((json) => setData(json));
   };
-
   useEffect(fetchData, [platform, sort, genre]);
-  //   console.log(data);
-
   return (
     <>
       <header>
         <div
+          id="img"
           className="image"
           style={{
             backgroundImage: `url(./images/league.png)`,
