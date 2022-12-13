@@ -25,6 +25,13 @@
 .toppc-grid .card-template div div:first-of-type p {
     display: none;
 }
+.toppc-grid .card-template div div:first-of-type {
+    margin: 5% 10%;
+    gap: 20px;
+}
+.toppc-grid .card-template div div:last-of-type {
+    margin: 0 10% 5%;
+}
 
 .toppc-grid .card-template:not(:first-of-type) {
     grid-column: span 2;
@@ -37,9 +44,10 @@
     flex-direction: column;
     width: 50%;
 }
-.toppc-grid .card-template:not(:first-of-type) div div:last-of-type {
+.toppc-grid .card-template div div:last-of-type {
     flex-direction: row;
     justify-content: flex-start;
+    width: 100%;
 }
 
 .toppc-grid .card-template:not(:first-of-type) img {
@@ -47,8 +55,24 @@
 }
 
 .toppc-grid .card-template:first-of-type {
+    display: flex;
+    align-items: flex-end;
+    padding: 5%;
     grid-row: span 3;
+    width: 100%;
+}
+.toppc-grid .card-template:first-of-type h2 {
+    font-size: 4.8rem;
+    text-transform: uppercase;
+    width: 100%;
+}
+.toppc-grid .card-template:first-of-type img {
+    display: none;
 }
 .toppc-grid .card-template div hr {
     display: none;
+}
+
+.toppc-grid .card-template div div img.platform {
+    width: 40px;
 }

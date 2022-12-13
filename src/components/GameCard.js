@@ -13,7 +13,11 @@ const GameCard = (props) => {
                 </div>
                 <hr />
                 <div>
-                    <p>{props.platform}</p>
+                    {props.platform == "PC (Windows)" ? (
+                        <img className="platform" src="./images/Windows.svg" />
+                    ) : (
+                        <img className="platform" src="./images/Browser.svg" />
+                    )}
                     <p>{props.genre}</p>
                 </div>
             </div>

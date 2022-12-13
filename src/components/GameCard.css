@@ -36,3 +36,9 @@ hr {
     font-size: 1.6rem;
     padding: 6px 12px;
 }
+
+.card-template div div img.platform {
+    width: 40px;
+
+    object-fit: initial;
+}
