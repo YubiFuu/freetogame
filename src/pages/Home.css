@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 36px;
-    padding: 5%;
+    margin: 5%;
 }
 .home div .recent-grid {
     display: grid;
@@ -22,17 +22,33 @@
     gap: 1%;
 }
 
-.toppc-grid .card-template div:first-of-type p {
+.toppc-grid .card-template div div:first-of-type p {
     display: none;
 }
 
 .toppc-grid .card-template:not(:first-of-type) {
     grid-column: span 2;
     display: flex;
+
+    border-radius: 20px 20px 20px 24px;
 }
+.toppc-grid .card-template:not(:first-of-type) div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.toppc-grid .card-template:not(:first-of-type) div div:last-of-type {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
 .toppc-grid .card-template:not(:first-of-type) img {
+    width: 50%;
 }
 
 .toppc-grid .card-template:first-of-type {
     grid-row: span 3;
+}
+.toppc-grid .card-template div hr {
+    display: none;
 }

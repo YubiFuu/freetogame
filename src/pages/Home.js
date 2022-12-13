@@ -14,7 +14,7 @@ const Home = () => {
 
     useEffect(() => {
         fetch(
-            "https://www.freetogame.com/api/games?platform=pc&category=mmorpg&sort-by=popularity"
+            "https://www.freetogame.com/api/games?platform=pc&sort-by=popularity"
         )
             .then((res) => res.json())
             .then((json) => setTopPc(json));
