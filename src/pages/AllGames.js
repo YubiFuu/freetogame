@@ -3,27 +3,34 @@ import GameCard from "../components/GameCard";
 import "./AllGames.css";
 const AllGames = () => {
   const [platform, setPlatform] = useState("all");
-  const [genre, setGenre] = useState("games?");
+  const [genre, setGenre] = useState("");
   const [sort, setSort] = useState("all");
   const [data, setData] = useState([]);
+  let fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
   const readInputPlatform = (event) => {
     setPlatform(event.target.id);
+    fetchData();
   };
-  const Relevance = (event) => {
+  const readInputSort = (event) => {
     setSort(event.target.id);
+    fetchData();
   };
+  const readInputGenre = (event) => {
+    setGenre(`&category=${event.target.id}`);
+    // fetchUrl = `https://www.freetogame.com/api/games?platform=${platform}&category=${genre}&sort-by=${sort}`;
+    fetchData();
+  };
+  console.log(genre);
+
   const fetchData = () => {
     console.log(platform);
-    fetch(
-      `https://www.freetogame.com/api/${genre}&platform=${platform}&sort-by=${sort}`
-    )
+    console.log(sort);
+    fetch(`${fetchUrl}`)
       .then((response) => response.json())
       .then((json) => setData(json));
   };
 
-  console.log(genre);
-
-  useEffect(fetchData, [platform]);
+  useEffect(fetchData, [platform, sort, genre]);
   //   console.log(data);
 
   return (
@@ -121,24 +128,39 @@ const AllGames = () => {
             <div className="dropdown-content">
               <div className="choice">
                 <input
-                  //   onClick={readInput}
-                  type="checkbox"
-                  name="mmoprg"
-                  id="mmoprg"
+                  onChange={readInputGenre}
+                  type="radio"
+                  name="1"
+                  id="mmorpg"
                   value="MMOPRG"
                 />
-                <label htmlFor="mmoprg">MMOPRG</label>
+                <label htmlFor="mmoprg">MMORPG</label>
               </div>
               <div className="choice">
-                <input type="checkbox" name="schooter" id="schooter" />
-                <label htmlFor="schooter">Schooter</label>
+                <input
+                  onChange={readInputGenre}
+                  type="radio"
+                  name="1"
+                  id="shooter"
+                />
+                <label htmlFor="schooter">Shooter</label>
               </div>
               <div className="choice">
-                <input type="checkbox" name="strategy" id="strategy" />
+                <input
+                  onChange={readInputGenre}
+                  type="radio"
+                  name="1"
+                  id="strategy"
+                />
                 <label htmlFor="strategy">Strategy</label>
               </div>
               <div className="choice">
-                <input type="checkbox" name="moba" id="moba" />
+                <input
+                  onChange={readInputGenre}
+                  type="radio"
+                  name="1"
+                  id="moba"
+                />
                 <label htmlFor="moba">Moba</label>
               </div>
             </div>
@@ -166,24 +188,43 @@ const AllGames = () => {
 
             <div className="dropdown-content">
               <div className="choice">
-                <input type="checkbox" name="all" id="all" />
+                <input
+                  onChange={readInputSort}
+                  type="radio"
+                  name="all"
+                  id="relevance"
+                />
                 <label htmlFor="all">Relevance</label>
               </div>
               <div className="choice">
-                <input type="checkbox" name="all" id="all" />
-                <label htmlFor="all">Popularity</label>
+                <input
+                  onChange={readInputSort}
+                  type="radio"
+                  name="all"
+                  id="popularity"
+                />
+                <label>Popularity</label>
               </div>
               <div className="choice">
-                <input type="checkbox" name="all" id="all" />
+                <input
+                  onChange={readInputSort}
+                  type="radio"
+                  name="all"
+                  id="release-date"
+                />
                 <label htmlFor="all">Release Date</label>
               </div>
               <div className="choice">
-                <input type="checkbox" name="all" id="all" />
+                <input
+                  onChange={readInputSort}
+                  type="radio"
+                  name="all"
+                  id="alphabetical"
+                />
                 <label htmlFor="all">Alphabetical</label>
               </div>
             </div>
           </div>
-          <button className="searchbtn">search</button>
         </form>
         <div className="gridd">
           {data.map((elt, index) => (
