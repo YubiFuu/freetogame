@@ -5,6 +5,7 @@ import "./Home.css";
 const Home = () => {
     const [recentGames, setRecentGames] = useState([]);
     const [topPc, setTopPc] = useState([]);
+    const [topBrowser, setTopBrowser] = useState([]);
 
     useEffect(() => {
         fetch("https://www.freetogame.com/api/games?sort-by=release-date")
@@ -18,6 +19,13 @@ const Home = () => {
         )
             .then((res) => res.json())
             .then((json) => setTopPc(json));
+    }, []);
+    useEffect(() => {
+        fetch(
+            "https://www.freetogame.com/api/games?platform=browser&sort-by=popularity"
+        )
+            .then((res) => res.json())
+            .then((json) => setTopBrowser(json));
     }, []);
 
     return (
@@ -46,7 +54,16 @@ const Home = () => {
                         <GameCard {...e} />
                     ))}
                 </div>
-                <Link to="/recentgames">Show More</Link>
+                <Link to="/games">Show More</Link>
+            </div>
+            <div>
+                <h3>Top 4 Games for Browser</h3>
+                <div className="recent-grid">
+                    {topBrowser.slice(0, 4).map((e) => (
+                        <GameCard {...e} />
+                    ))}
+                </div>
+                <Link to="/games">Show More</Link>
             </div>
         </main>
     );
