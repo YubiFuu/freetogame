@@ -4,7 +4,7 @@
     gap: 36px;
     padding: 5%;
 }
-.home div .grid {
+.home div .recent-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1%;
@@ -14,4 +14,25 @@
 }
 .home div h3 {
     font-size: 2.4rem;
+}
+
+.toppc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1%;
+}
+
+.toppc-grid .card-template div:first-of-type p {
+    display: none;
+}
+
+.toppc-grid .card-template:not(:first-of-type) {
+    grid-column: span 2;
+    display: flex;
+}
+.toppc-grid .card-template:not(:first-of-type) img {
+}
+
+.toppc-grid .card-template:first-of-type {
+    grid-row: span 3;
 }
