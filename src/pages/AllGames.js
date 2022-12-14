@@ -3,51 +3,62 @@ import GameCard from "../components/GameCard";
 import AppContext from "../components/AppContext";
 import "./AllGames.css";
 const AllGames = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const context = useContext(AppContext);
   const [platform, setPlatform] = useState("all");
   const [genre, setGenre] = useState("");
   const [sort, setSort] = useState("all");
   const [data, setData] = useState([]);
   let gameName = context.nameContext;
+  let id = "540";
   console.log(gameName);
   let fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
 
   /* -------------------------------------------------------------------------- */
   /*                                 filter test                                */
   /* -------------------------------------------------------------------------- */
-  function filterByName() {
-    console.log(gameName);
-    if (gameName != "") {
-      // fetchUrl = ` https://www.freetogame.com/api/game?id=${id}`;
-    }
-
-    console.log(data);
-  }
+  // const filterByName = () => {
+  //   console.log(gameName);
+  //   fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
+  //   console.log(data);
+  //   fetchData();
+  // };
 
   /* -------------------------------------------------------------------------- */
   /*                                 filter test                                */
   /* -------------------------------------------------------------------------- */
   const fetchData = () => {
+    console.log(fetchUrl);
     fetch(`${fetchUrl}`)
       .then((response) => response.json())
-      .then((json) => setData(json), filterByName(), setIsLoading(false));
+      .then((json) => setData(json));
   };
   useEffect(fetchData, [platform, sort, genre, gameName]);
-  if (isLoading) {
-    return (
-      <div style={{ backgroundColor: "red" }}>Daten noch nicht bereit...</div>
-    );
-  }
+
+  const filterByName = () => {
+    console.log(gameName);
+    console.log(data[0]?.id);
+    data.map((e) => {
+      if (gameName == e.title) {
+        id = e.id;
+        fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
+      }
+    });
+
+    fetchData();
+  };
+
   const readInputPlatform = (event) => {
+    document.querySelector(".platform").textContent = event.target.id;
     setPlatform(event.target.id);
     fetchData();
   };
   const readInputSort = (event) => {
+    document.querySelector(".sort").textContent = event.target.id;
     setSort(event.target.id);
     fetchData();
   };
   const readInputGenre = (event) => {
+    document.querySelector(".genre").textContent = event.target.id;
     setGenre(`&category=${event.target.id}`);
     fetchData();
   };
@@ -78,7 +89,7 @@ const AllGames = () => {
         <form className="filter">
           <div className="dropdown">
             <div className="dropbtn">
-              <h2>Platform</h2>
+              <h2 className="platform">Platform</h2>
               <svg
                 className="vector-down"
                 width="12"
@@ -134,7 +145,7 @@ const AllGames = () => {
           </div>
           <div className="dropdown">
             <div className="dropbtn">
-              <h2>Genre/Tag</h2>
+              <h2 className="genre">Genre/Tag</h2>
               <svg
                 className="vector-down"
                 width="12"
@@ -195,7 +206,7 @@ const AllGames = () => {
           </div>
           <div className="dropdown">
             <div className="dropbtn">
-              <h2>Sort by</h2>
+              <h2 className="sort">Sort by</h2>
               <svg
                 className="vector-down"
                 width="12"
