@@ -48,7 +48,9 @@ const GameDetails = () => {
                     />
                     <h3>Platform: {gameDetail.platform}</h3>
                     <p>{gameDetail.genre}</p>
-                    <a href={gameDetail.game_url}>Play Now</a>
+                    <a href={gameDetail.game_url} target="_blank">
+                        Play Now
+                    </a>
                 </div>
                 <div>
                     <h3>About</h3>
@@ -56,7 +58,7 @@ const GameDetails = () => {
                 </div>
             </div>
             <div className="row-wrapper">
-                <div>
+                <div className="add-info">
                     <img
                         src={
                             gameDetail.screenshots
@@ -92,56 +94,66 @@ const GameDetails = () => {
                             }
                         />
                         <h3>Minimum System Requirements</h3>
-                        <div>
+                        <div className="min-req">
                             <div>
-                                <h5>OS</h5>
-                                <p>
-                                    {gameDetail.minimum_system_requirements.os}
-                                </p>
+                                <div>
+                                    <h5>OS</h5>
+                                    <p>
+                                        {
+                                            gameDetail
+                                                .minimum_system_requirements.os
+                                        }
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5>Memory</h5>
+                                    <p>
+                                        {
+                                            gameDetail
+                                                .minimum_system_requirements
+                                                .memory
+                                        }
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5>Storage</h5>
+                                    <p>
+                                        {
+                                            gameDetail
+                                                .minimum_system_requirements
+                                                .storage
+                                        }
+                                    </p>
+                                </div>
                             </div>
                             <div>
-                                <h5>Memory</h5>
-                                <p>
-                                    {
-                                        gameDetail.minimum_system_requirements
-                                            .memory
-                                    }
-                                </p>
-                            </div>
-                            <div>
-                                <h5>Storage</h5>
-                                <p>
-                                    {
-                                        gameDetail.minimum_system_requirements
-                                            .storage
-                                    }
-                                </p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h5>Processor</h5>
-                                <p>
-                                    {
-                                        gameDetail.minimum_system_requirements
-                                            .processor
-                                    }
-                                </p>
-                            </div>
-                            <div>
-                                <h5>Graphics</h5>
-                                <p>
-                                    {
-                                        gameDetail.minimum_system_requirements
-                                            .graphics
-                                    }
-                                </p>
-                            </div>
-                            <div>
-                                <h5>Additional Notes</h5>
-                                <p>
-                                    Specifications may change during development
-                                </p>
+                                <div>
+                                    <h5>Processor</h5>
+                                    <p>
+                                        {
+                                            gameDetail
+                                                .minimum_system_requirements
+                                                .processor
+                                        }
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5>Graphics</h5>
+                                    <p>
+                                        {
+                                            gameDetail
+                                                .minimum_system_requirements
+                                                .graphics
+                                        }
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5>Additional Notes</h5>
+                                    <p>
+                                        Specifications may change during
+                                        development
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

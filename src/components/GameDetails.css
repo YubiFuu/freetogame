@@ -1,19 +1,25 @@
-.details p {
+.details * p {
     font-size: 1.6rem;
 }
+.details * h5 {
+    font-size: 1.8rem;
+}
+
 .details h2 {
     font-size: 4.8rem;
-    margin: 5%;
+    margin: 9.6% 8% 4.8%;
 }
 .row-wrapper {
     display: flex;
-    margin: 5%;
+    margin: 0 8%;
+    gap: 25px;
 }
-.row-wrapper div {
+.row-wrapper > div {
     width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 3.6%;
+    gap: 30px;
+    margin-bottom: 96px;
 }
 .row-wrapper div img {
     width: 100%;
@@ -25,4 +31,25 @@
 
 .row-wrapper div img.thumbnail {
     width: 70%;
+}
+
+.add-info div {
+    display: flex;
+    align-items: baseline;
+}
+.add-info div h5 {
+    min-width: 20%;
+}
+
+.min-req {
+    display: flex;
+    justify-content: space-between;
+}
+.min-req div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.hide-p .card-template div div:first-of-type p {
+    display: none;
 }
