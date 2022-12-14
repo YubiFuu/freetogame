@@ -1,27 +1,39 @@
-.iconss a {
-  background-color: initial;
-  display: inline-block;
-  color: initial;
-  padding: initial;
-  border-radius: initial;
-  text-decoration: none;
-  margin-bottom: 60px;
-}
 .side-bar {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  gap: 352px;
-  align-items: center;
-  top: 6px;
-  margin-right: 30px;
-  background-color: #040f14;
-  border-right: 2px solid white;
-  padding-top: 14px;
-  height: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 33%;
+    align-items: flex-start;
+    top: 0;
+    z-index: 5;
+    margin-right: 30px;
+    background-color: #040f14;
+    border-right: 2px solid white;
+
+    height: 100%;
 }
-.iconss {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.side-bar button {
+    background-color: initial;
+    border: none;
+    color: white;
+}
+
+.side-bar div {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-bar div a {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 12px 12px 0;
+    background-color: initial;
+}
+.side-bar div a p {
+    padding-right: 13px;
+}
+
+.side-bar div a:hover {
+    background-color: #ff4654;
 }

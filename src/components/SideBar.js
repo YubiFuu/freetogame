@@ -1,35 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SideBar.css";
 
 const SideBar = () => {
-  return (
-    <div className="side-bar">
-      <svg
-        stroke="currentColor"
-        fill="currentColor"
-        strokeWidth="0"
-        viewBox="0 0 512 512"
-        height="40px"
-        width="40px"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"></path>
-      </svg>
+    const [toggle, setToggle] = useState(false);
 
-      <div className="iconss">
-        <Link to="/">
-          <img src="./images/Home.svg" alt="" />
-        </Link>
-        <Link to="/games">
-          <img src="./images/AllGames.svg" alt="" />
-        </Link>
-        <Link to="/recentgames">
-          <img src="./images/RecentlyAdded.svg" alt="" />
-        </Link>
-      </div>
-    </div>
-  );
+    return (
+        <div
+            className="side-bar"
+            style={toggle ? { width: "fit-content" } : null}
+        >
+            <button
+                onClick={() => {
+                    setToggle(!toggle);
+                    console.log(toggle);
+                }}
+            >
+                <img src="./images/Burger.svg" alt="" />
+            </button>
+
+            <div>
+                <Link to="/">
+                    <img src="./images/home1.svg" alt="" />
+                    {toggle ? <p>Home</p> : null}
+                </Link>
+                <Link to="/games">
+                    <img src="./images/AllGames.svg" alt="" />
+                    {toggle ? <p>All Games</p> : null}
+                </Link>
+                <Link to="/recentgames">
+                    <img src="./images/RecentlyAdded.svg" alt="" />
+                    {toggle ? <p>Recently Added</p> : null}
+                </Link>
+            </div>
+        </div>
+    );
 };
 
 export default SideBar;
