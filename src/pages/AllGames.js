@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import GameCard from "../components/GameCard";
-import Header from "../components/Header";
+import AppContext from "../components/AppContext";
 import "./AllGames.css";
 const AllGames = () => {
-  let game = document.querySelector(".input-search").value;
-  console.log(game);
+  const context = useContext(AppContext);
+  console.log(context.nameContext);
+  console.log(document.querySelector(".card-template"));
   const [platform, setPlatform] = useState("all");
   const [genre, setGenre] = useState("");
   const [sort, setSort] = useState("all");
@@ -64,7 +64,6 @@ const AllGames = () => {
                 />
               </svg>
             </div>
-
             <div className="dropdown-content">
               <div className="choice">
                 <input
@@ -223,6 +222,7 @@ const AllGames = () => {
             </div>
           </div>
         </form>
+
         <div className="gridd">
           {data.map((elt, index) => (
             <GameCard

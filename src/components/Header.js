@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { useState } from "react";
+import { useContext } from "react";
+import AppContext from "./AppContext";
 const Header = () => {
-  const [game, setGame] = useState("");
-
-  const readSearch = (event) => {
-    setGame(event.target.value);
+  const value = useContext(AppContext);
+  //   console.log(context);
+  const readSearch = () => {
+    value.setNameContext(document.querySelector(".input-search").value);
   };
-  console.log(game);
-
   return (
     <>
       <div className="header" action="">
@@ -17,15 +16,13 @@ const Header = () => {
         </Link>
 
         <div className="recht">
-          <button className="button-search">
+          <button onClick={readSearch} className="button-search">
             <img className="search-logo" src="./images/Search.svg" alt="" />
           </button>
           <input
             type="text"
             className="input-search"
             placeholder="Type to Search..."
-            onChange={readSearch}
-            value={game}
           />
         </div>
       </div>
