@@ -22,12 +22,36 @@
     gap: 24px;
 }
 
-.toppc-grid .card-template div div:first-of-type p {
+.toppc-grid .card-template div div:first-of-type p:last-of-type {
     display: none;
 }
+.toppc-grid .card-template div div:first-of-type p:first-of-type {
+    position: absolute;
+    border: 1px solid #ff4654;
+    background-color: #102130;
+    border-radius: 50%;
+    width: auto;
+    min-height: auto;
+    padding: 10px 17px;
+    font-size: 1.6rem;
+    left: -210%;
+    font-weight: 600;
+}
+.recent-grid .card-template div div:first-of-type p:first-of-type {
+    display: none;
+}
+
+.toppc-grid .card-template:first-of-type div div:first-of-type p:first-of-type {
+    left: 90%;
+    top: -150%;
+    font-size: 2.4rem;
+    padding: 10px 20px;
+}
+
 .toppc-grid .card-template div div:first-of-type {
     margin: 5% 10%;
     gap: 20px;
+    position: relative;
 }
 .toppc-grid .card-template div div:last-of-type {
     margin: 0 10% 5%;
@@ -60,10 +84,15 @@
     padding: 5%;
     grid-row: span 3;
     width: 100%;
+    background-image: var(--backgroundImage);
+    background-position: center;
+    background-size: cover;
 }
 .toppc-grid .card-template:first-of-type h2 {
     font-size: 4.8rem;
     text-transform: uppercase;
+    text-shadow: -1px -1px 0 #102130, 1px -1px 0 #102130, -1px 1px 0 #102130,
+        1px 1px 0 #102130;
     width: 100%;
 }
 .toppc-grid .card-template:first-of-type img {

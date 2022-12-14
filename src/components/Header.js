@@ -4,7 +4,6 @@ import { useContext } from "react";
 import AppContext from "./AppContext";
 const Header = () => {
   const value = useContext(AppContext);
-  //   console.log(context);
   const readSearch = () => {
     value.setNameContext(document.querySelector(".input-search").value);
   };
