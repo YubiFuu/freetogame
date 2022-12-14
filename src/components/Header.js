@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { useState } from "react";
+import { useContext } from "react";
+import AppContext from "./AppContext";
 const Header = () => {
-  const [game, setGame] = useState("");
-
+  const value = useContext(AppContext);
+  //   console.log(context);
   const readSearch = () => {
-    setGame(document.querySelector(".input-search").value);
+    value.setNameContext(document.querySelector(".input-search").value);
   };
-  console.log(game);
-
   return (
     <>
       <div className="header" action="">
