@@ -7,6 +7,7 @@ const GameCard = (props) => {
             <img src={props.thumbnail} alt={props.thumbnail} />
             <div>
                 <div>
+                    <p>{props.igitt}</p>
                     <h2>{props.title}</h2>
                     <p>{props.short_description}</p>
                     <Link to={`/games/${props.id}`}> Read More </Link>

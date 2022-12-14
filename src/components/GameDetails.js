@@ -47,7 +47,7 @@ const GameDetails = () => {
                         alt="thumbnail of the game"
                     />
                     <h3>Platform: {gameDetail.platform}</h3>
-                    <p>{gameDetail.genre}</p>
+                    <p className="red-border">{gameDetail.genre}</p>
                     <a href={gameDetail.game_url} target="_blank">
                         Play Now
                     </a>
