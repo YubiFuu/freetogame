@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import GameCard from "../components/GameCard";
 import AppContext from "../components/AppContext";
+import Header from "../components/Header";
 import "./AllGames.css";
 const AllGames = () => {
   const context = useContext(AppContext);
@@ -9,7 +10,8 @@ const AllGames = () => {
   const [sort, setSort] = useState("all");
   const [data, setData] = useState([]);
   let gameName = context.nameContext;
-  let id = "540";
+  let id = 540;
+
   console.log(gameName);
   let fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
 
@@ -26,6 +28,17 @@ const AllGames = () => {
   /* -------------------------------------------------------------------------- */
   /*                                 filter test                                */
   /* -------------------------------------------------------------------------- */
+  if (gameName != "") {
+    console.log(gameName);
+    data.map((e) => {
+      if (gameName == e.title) {
+        console.log(e.id);
+        id = `${e.id}`;
+        fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
+      }
+    });
+    document.querySelector(".input-search").value = "";
+  }
   const fetchData = () => {
     console.log(fetchUrl);
     fetch(`${fetchUrl}`)
@@ -33,19 +46,20 @@ const AllGames = () => {
       .then((json) => setData(json));
   };
   useEffect(fetchData, [platform, sort, genre, gameName]);
+  console.log(data);
 
-  const filterByName = () => {
-    console.log(gameName);
-    console.log(data[0]?.id);
-    data.map((e) => {
-      if (gameName == e.title) {
-        id = e.id;
-        fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
-      }
-    });
+  // const filterByName = () => {
+  //   console.log(gameName);
+  //   console.log(data[0]?.id);
+  //   data.map((e) => {
+  //     if (gameName == e.title) {
+  //       id = e.id;
+  //       fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
+  //     }
+  //   });
 
-    fetchData();
-  };
+  //   fetchData();
+  // };
 
   const readInputPlatform = (event) => {
     document.querySelector(".platform").textContent = event.target.id;

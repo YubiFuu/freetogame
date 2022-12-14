@@ -6,6 +6,7 @@ const Header = () => {
   const value = useContext(AppContext);
   const readSearch = () => {
     value.setNameContext(document.querySelector(".input-search").value);
+    document.querySelector(".input-search").value = "";
   };
   return (
     <>
