@@ -50,6 +50,11 @@
     flex-direction: column;
     gap: 12px;
 }
-.hide-p .card-template div div:first-of-type p {
-    display: none;
+.red-border {
+    width: fit-content;
+    border: 1px solid #ff4654;
+    background-color: #102130;
+    border-radius: 15px;
+    font-size: 1.6rem;
+    padding: 6px 12px;
 }
