@@ -24,7 +24,7 @@ const SideBar = () => {
         <Link to="/games">
           <img src="./images/AllGames.svg" alt="" />
         </Link>
-        <Link>
+        <Link to="/recentgames">
           <img src="./images/RecentlyAdded.svg" alt="" />
         </Link>
       </div>

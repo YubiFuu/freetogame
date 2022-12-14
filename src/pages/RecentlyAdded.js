@@ -16,7 +16,7 @@ const RecentlyAdded = () => {
           id="img"
           className="image"
           style={{
-            backgroundImage: `url(./images/league.png)`,
+            backgroundImage: `url(./images/LoL.png)`,
           }}
         >
           <h2>Recently Added</h2>
