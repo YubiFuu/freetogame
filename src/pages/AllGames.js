@@ -3,14 +3,42 @@ import GameCard from "../components/GameCard";
 import AppContext from "../components/AppContext";
 import "./AllGames.css";
 const AllGames = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const context = useContext(AppContext);
-  console.log(context.nameContext);
-  console.log(document.querySelector(".card-template"));
   const [platform, setPlatform] = useState("all");
   const [genre, setGenre] = useState("");
   const [sort, setSort] = useState("all");
   const [data, setData] = useState([]);
+  let gameName = context.nameContext;
+  console.log(gameName);
   let fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
+
+  /* -------------------------------------------------------------------------- */
+  /*                                 filter test                                */
+  /* -------------------------------------------------------------------------- */
+  function filterByName() {
+    console.log(gameName);
+    if (gameName != "") {
+      // fetchUrl = ` https://www.freetogame.com/api/game?id=${id}`;
+    }
+
+    console.log(data);
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                 filter test                                */
+  /* -------------------------------------------------------------------------- */
+  const fetchData = () => {
+    fetch(`${fetchUrl}`)
+      .then((response) => response.json())
+      .then((json) => setData(json), filterByName(), setIsLoading(false));
+  };
+  useEffect(fetchData, [platform, sort, genre, gameName]);
+  if (isLoading) {
+    return (
+      <div style={{ backgroundColor: "red" }}>Daten noch nicht bereit...</div>
+    );
+  }
   const readInputPlatform = (event) => {
     setPlatform(event.target.id);
     fetchData();
@@ -23,16 +51,20 @@ const AllGames = () => {
     setGenre(`&category=${event.target.id}`);
     fetchData();
   };
-  const fetchData = () => {
-    fetch(`${fetchUrl}`)
-      .then((response) => response.json())
-      .then((json) => setData(json));
-  };
-  useEffect(fetchData, [platform, sort, genre]);
   return (
-    <>
+    <div className="wrraper">
       <header>
-        <div
+        <iframe
+          className="image"
+          width="80%"
+          height="534"
+          src="https://www.youtube.com/embed/oJca6zoI50E?autoplay=0"
+          title="Warzone 2.0 Launch Trailer | Call of Duty: Warzone 2.0"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        {/* <div
           id="img"
           className="image"
           style={{
@@ -40,7 +72,7 @@ const AllGames = () => {
           }}
         >
           <h2>All Games</h2>
-        </div>
+        </div> */}
       </header>
       <main>
         <form className="filter">
@@ -227,6 +259,7 @@ const AllGames = () => {
           {data.map((elt, index) => (
             <GameCard
               key={index}
+              id={elt.id}
               title={elt.title}
               platform={elt.platform}
               genre={elt.genre}
@@ -235,7 +268,7 @@ const AllGames = () => {
           ))}
         </div>
       </main>
-    </>
+    </div>
   );
 };
 
