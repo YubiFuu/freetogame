@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import GameCard from "../components/GameCard";
 import AppContext from "../components/AppContext";
-import Header from "../components/Header";
 import "./AllGames.css";
 const AllGames = () => {
   const context = useContext(AppContext);
@@ -9,58 +8,37 @@ const AllGames = () => {
   const [genre, setGenre] = useState("");
   const [sort, setSort] = useState("all");
   const [data, setData] = useState([]);
+  let id;
   let gameName = context.nameContext;
-  let id = 540;
-
-  console.log(gameName);
   let fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
-
-  /* -------------------------------------------------------------------------- */
-  /*                                 filter test                                */
-  /* -------------------------------------------------------------------------- */
-  // const filterByName = () => {
-  //   console.log(gameName);
-  //   fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
-  //   console.log(data);
-  //   fetchData();
-  // };
-
-  /* -------------------------------------------------------------------------- */
-  /*                                 filter test                                */
-  /* -------------------------------------------------------------------------- */
-  if (gameName != "") {
-    console.log(gameName);
-    data.map((e) => {
-      if (gameName == e.title) {
-        console.log(e.id);
-        id = `${e.id}`;
-        fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
-      }
-    });
-    document.querySelector(".input-search").value = "";
-  }
   const fetchData = () => {
     console.log(fetchUrl);
     fetch(`${fetchUrl}`)
       .then((response) => response.json())
       .then((json) => setData(json));
   };
-  useEffect(fetchData, [platform, sort, genre, gameName]);
-  console.log(data);
 
-  // const filterByName = () => {
-  //   console.log(gameName);
-  //   console.log(data[0]?.id);
-  //   data.map((e) => {
-  //     if (gameName == e.title) {
-  //       id = e.id;
-  //       fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
-  //     }
-  //   });
-
-  //   fetchData();
-  // };
-
+  console.log(context.nameContext != "");
+  if (context.nameContext != "") {
+    console.log(context.nameContext);
+    console.log(context.nameContext != "");
+    console.log(data);
+    data.map((e) => {
+      if (gameName.toLowerCase() == e.title.toLowerCase()) {
+        console.log(e.id);
+        id = e.id;
+        fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
+        console.log(fetchUrl);
+      }
+    });
+    context.setNameContext("");
+    fetchData();
+  }
+  if (context.setNameContext == "") {
+    fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
+    fetchData();
+  }
+  useEffect(fetchData, [platform, sort, genre]);
   const readInputPlatform = (event) => {
     document.querySelector(".platform").textContent = event.target.id;
     setPlatform(event.target.id);
@@ -281,7 +259,7 @@ const AllGames = () => {
         </form>
 
         <div className="gridd">
-          {data.map((elt, index) => (
+          {/* {data.map((elt, index) => (
             <GameCard
               key={index}
               id={elt.id}
@@ -290,7 +268,28 @@ const AllGames = () => {
               genre={elt.genre}
               thumbnail={elt.thumbnail}
             />
-          ))}
+          ))} */}
+          {data.length > 1 ? (
+            data.map((elt, index) => (
+              <GameCard
+                key={index}
+                id={elt.id}
+                title={elt.title}
+                platform={elt.platform}
+                genre={elt.genre}
+                thumbnail={elt.thumbnail}
+              />
+            ))
+          ) : (
+            <GameCard
+              key={data.id}
+              id={data.id}
+              title={data.title}
+              platform={data.platform}
+              genre={data.genre}
+              thumbnail={data.thumbnail}
+            />
+          )}
         </div>
       </main>
     </div>

@@ -12,9 +12,9 @@ import Header from "./components/Header";
 function App() {
   const [nameContext, setNameContext] = useState("");
   return (
-    <AppContext.Provider value={{ nameContext, setNameContext }}>
-      <div className="App">
-        <BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <AppContext.Provider value={{ nameContext, setNameContext }}>
           <SideBar />
           <Header />
           <Routes>
@@ -23,9 +23,9 @@ function App() {
             <Route path="/recentgames" element={<RecentlyAdded />}></Route>
             <Route path="/games/:id" element={<GameDetails />}></Route>
           </Routes>
-        </BrowserRouter>
-      </div>
-    </AppContext.Provider>
+        </AppContext.Provider>
+      </BrowserRouter>
+    </div>
   );
 }
 
