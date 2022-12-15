@@ -27,7 +27,7 @@ const RecentlyAdded = () => {
     fetchData();
   }
   useEffect(fetchData, [fetchUrl, gameName]);
-  console.log(recentGames);
+  console.log(fetchUrl);
   return (
     <>
       <header>
