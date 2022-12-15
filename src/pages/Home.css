@@ -34,7 +34,7 @@
     min-height: auto;
     padding: 10px 17px;
     font-size: 1.6rem;
-    left: -210%;
+    left: 2.5%;
     font-weight: 600;
 }
 .recent-grid .card-template div div:first-of-type p:first-of-type {
@@ -42,16 +42,19 @@
 }
 
 .toppc-grid .card-template:first-of-type div div:first-of-type p:first-of-type {
-    left: 120%;
-    top: -220%;
+    left: auto;
+    right: 5%;
+    top: 2.5%;
     font-size: 2.4rem;
     padding: 10px 20px;
+}
+.toppc-grid .card-template {
+    position: relative;
 }
 
 .toppc-grid .card-template div div:first-of-type {
     margin: 5% 10%;
     gap: 20px;
-    position: relative;
 }
 .toppc-grid .card-template div div:last-of-type {
     margin: 0 10% 5%;

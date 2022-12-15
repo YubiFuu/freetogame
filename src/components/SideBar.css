@@ -37,3 +37,8 @@
 .side-bar div a:hover {
     background-color: #ff4654;
 }
+
+.side-bar div a:focus {
+    background-color: #102130;
+    /* --backgroundColor */
+}
