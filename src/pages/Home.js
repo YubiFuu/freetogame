@@ -27,7 +27,11 @@ const Home = () => {
             "https://www.freetogame.com/api/games?platform=pc&sort-by=popularity"
         )
             .then((res) => res.json())
-            .then((json) => setTopPc(json));
+            .then((json) => {
+                setTopPc(json);
+                console.log(json);
+            });
+
         setLoading2(false);
     }, []);
     useEffect(() => {

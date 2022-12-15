@@ -16,7 +16,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-a {
+a:not(.header a) {
     display: inline-block;
     background-color: #ff4654;
     font-size: 1.8rem;
@@ -66,5 +66,8 @@ body {
 }
 
 main {
+    padding-left: 74px;
+}
+header {
     padding-left: 74px;
 }

@@ -4,6 +4,7 @@ import "./GameDetails.css";
 
 const GameDetails = () => {
     const { id } = useParams();
+    console.log({ id });
     const [gameDetail, setGameDetail] = useState([]);
     const [loading, setLoading] = useState(true);
 
