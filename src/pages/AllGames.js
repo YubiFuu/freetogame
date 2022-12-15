@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import GameCard from "../components/GameCard";
 import AppContext from "../components/AppContext";
 import "./AllGames.css";
@@ -12,32 +13,30 @@ const AllGames = () => {
   let gameName = context.nameContext;
   let fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
   const fetchData = () => {
-    console.log(fetchUrl);
     fetch(`${fetchUrl}`)
       .then((response) => response.json())
       .then((json) => setData(json));
   };
-
-  console.log(context.nameContext != "");
   if (context.nameContext != "") {
-    console.log(context.nameContext);
-    console.log(context.nameContext != "");
-    console.log(data);
     data.map((e) => {
       if (gameName.toLowerCase() == e.title.toLowerCase()) {
         console.log(e.id);
         id = e.id;
         fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
         console.log(fetchUrl);
+      } else {
+        document.querySelector(
+          ".gridd"
+        ).innerHTML = `<h1> Ther is no game with this name</h1>`;
       }
     });
     context.setNameContext("");
     fetchData();
   }
-  if (context.setNameContext == "") {
-    fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
-    fetchData();
-  }
+  // if (gameName == "") {
+  //   fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
+  //   fetchData();
+  // }
   useEffect(fetchData, [platform, sort, genre]);
   const readInputPlatform = (event) => {
     document.querySelector(".platform").textContent = event.target.id;
@@ -57,25 +56,12 @@ const AllGames = () => {
   return (
     <div className="wrraper">
       <header>
-        <iframe
-          className="image"
-          width="80%"
-          height="534"
-          src="https://www.youtube.com/embed/oJca6zoI50E?autoplay=0"
-          title="Warzone 2.0 Launch Trailer | Call of Duty: Warzone 2.0"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-        {/* <div
-          id="img"
+        <div
           className="image"
           style={{
-            backgroundImage: `url(./images/league.png)`,
+            backgroundImage: `url(./images/League.png)`,
           }}
-        >
-          <h2>All Games</h2>
-        </div> */}
+        ></div>
       </header>
       <main>
         <form className="filter">
@@ -163,6 +149,16 @@ const AllGames = () => {
                   type="radio"
                   name="1"
                   id="mmorpg"
+                  value="all"
+                />
+                <label htmlFor="mmoprg">All</label>
+              </div>
+              <div className="choice">
+                <input
+                  onChange={readInputGenre}
+                  type="radio"
+                  name="1"
+                  id="mmorpg"
                   value="MMOPRG"
                 />
                 <label htmlFor="mmoprg">MMORPG</label>
@@ -223,6 +219,15 @@ const AllGames = () => {
                   onChange={readInputSort}
                   type="radio"
                   name="all"
+                  id="all"
+                />
+                <label htmlFor="all">All</label>
+              </div>
+              <div className="choice">
+                <input
+                  onChange={readInputSort}
+                  type="radio"
+                  name="all"
                   id="relevance"
                 />
                 <label htmlFor="all">Relevance</label>
@@ -259,16 +264,6 @@ const AllGames = () => {
         </form>
 
         <div className="gridd">
-          {/* {data.map((elt, index) => (
-            <GameCard
-              key={index}
-              id={elt.id}
-              title={elt.title}
-              platform={elt.platform}
-              genre={elt.genre}
-              thumbnail={elt.thumbnail}
-            />
-          ))} */}
           {data.length > 1 ? (
             data.map((elt, index) => (
               <GameCard

@@ -6,6 +6,13 @@ const Header = () => {
   const value = useContext(AppContext);
   const readSearch = () => {
     value.setNameContext(document.querySelector(".input-search").value);
+    document.querySelector(".input-search").value = "";
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      value.setNameContext(document.querySelector(".input-search").value);
+      document.querySelector(".input-search").value = "";
+    }
   };
   return (
     <>
@@ -19,6 +26,7 @@ const Header = () => {
             <img className="search-logo" src="./images/Search.svg" alt="" />
           </button>
           <input
+            onKeyDown={handleKeyDown}
             type="text"
             className="input-search"
             placeholder="Type to Search..."
