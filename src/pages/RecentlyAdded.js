@@ -9,6 +9,7 @@ const RecentlyAdded = () => {
   let gameName = context.nameContext;
   const [recentGames, setRecentGames] = useState([]);
   const fetchData = () => {
+    console.log(fetchUrl);
     fetch(`${fetchUrl}`)
       .then((res) => res.json())
       .then((json) => setRecentGames(json));
@@ -25,7 +26,7 @@ const RecentlyAdded = () => {
     context.setNameContext("");
     fetchData();
   }
-  useEffect(fetchData, [gameName]);
+  useEffect(fetchData, [fetchUrl, gameName]);
   console.log(recentGames);
   return (
     <>

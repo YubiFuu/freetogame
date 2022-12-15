@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import GameCard from "../components/GameCard";
 import AppContext from "../components/AppContext";
 import "./AllGames.css";
