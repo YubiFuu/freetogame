@@ -24,19 +24,11 @@ const AllGames = () => {
         id = e.id;
         fetchUrl = `https://www.freetogame.com/api/game?id=${id}`;
         console.log(fetchUrl);
-      } else {
-        document.querySelector(
-          ".gridd"
-        ).innerHTML = `<h1> Ther is no game with this name</h1>`;
       }
     });
     context.setNameContext("");
     fetchData();
   }
-  // if (gameName == "") {
-  //   fetchUrl = `https://www.freetogame.com/api/games?&platform=${platform}${genre}&sort-by=${sort}`;
-  //   fetchData();
-  // }
   useEffect(fetchData, [platform, sort, genre]);
   const readInputPlatform = (event) => {
     document.querySelector(".platform").textContent = event.target.id;
@@ -51,6 +43,9 @@ const AllGames = () => {
   const readInputGenre = (event) => {
     document.querySelector(".genre").textContent = event.target.id;
     setGenre(`&category=${event.target.id}`);
+    if (document.querySelector(".genre").textContent == "all") {
+      setGenre(``);
+    }
     fetchData();
   };
   return (
@@ -148,7 +143,7 @@ const AllGames = () => {
                   onChange={readInputGenre}
                   type="radio"
                   name="1"
-                  id="mmorpg"
+                  id="all"
                   value="all"
                 />
                 <label htmlFor="mmoprg">All</label>
