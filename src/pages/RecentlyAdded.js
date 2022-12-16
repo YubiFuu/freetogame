@@ -26,7 +26,7 @@ const RecentlyAdded = () => {
     context.setNameContext("");
     fetchData();
   }
-  useEffect(fetchData, [fetchUrl, gameName]);
+  useEffect(fetchData, []);
   console.log(fetchUrl);
   return (
     <>
