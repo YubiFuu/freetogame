@@ -100,7 +100,7 @@ const AllGames = () => {
                   id="pc"
                   value="1"
                 />
-                <label htmlFor="windwos">Windwos (pc)</label>
+                <label htmlFor="windwos">Windows (pc)</label>
               </div>
               <div className="choice">
                 <input
