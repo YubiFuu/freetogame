@@ -8,12 +8,13 @@ const Header = () => {
     value.setNameContext(document.querySelector(".input-search").value);
     document.querySelector(".input-search").value = "";
   };
-  // const handleKeyDown = (event) => {
-  //   if (event.key === "Enter") {
-  //     value.setNameContext(document.querySelector(".input-search").value);
-  //     document.querySelector(".input-search").value = "";
-  //   }
-  // };
+  // enter button bei searchbar
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      value.setNameContext(document.querySelector(".input-search").value);
+      document.querySelector(".input-search").value = "";
+    }
+  };
   return (
     <>
       <div className="header" action="">
@@ -26,7 +27,7 @@ const Header = () => {
             <img className="search-logo" src="./images/Search.svg" alt="" />
           </button>
           <input
-            // onKeyDown={handleKeyDown}
+            onKeyDown={handleKeyDown}
             type="text"
             className="input-search"
             placeholder="Type to Search..."
